@@ -1,0 +1,13 @@
+{
+  "eventId": "00000000-0000-0000-0000-000000000001",
+  "type": "discord.member.joined",
+  "version": 1,
+  "occurredAt": "2026-08-14T18:00:00Z",
+  "correlationId": "00000000-0000-0000-0000-000000000002",
+  "causationId": null,
+  "botId": "main",
+  "guildId": "123456789012345678",
+  "payload": {
+    "userId": "987654321098765432"
+  }
+}

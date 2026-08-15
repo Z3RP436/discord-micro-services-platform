@@ -1,0 +1,24 @@
+apiVersion: platform.discord/v1
+kind: Service
+metadata:
+  id: gamemate
+  name: GameMate
+spec:
+  image: registry.example/gamemate:1.0.0
+  replicas: 1
+  resources:
+    cpu:
+      request: 250m
+      limit: 1000m
+    memory:
+      request: 256Mi
+      limit: 1024Mi
+  subscriptions:
+    events:
+      - discord.member.joined
+      - discord.member.left
+  commands:
+    - event
+    - event-create
+    - event-list
+    - event-cancel

@@ -1,0 +1,27 @@
+service:
+  id: gamemate
+  name: GameMate
+  version: 1.0.0
+
+resources:
+  cpu:
+    request: 250m
+    limit: 1000m
+  memory:
+    request: 256Mi
+    limit: 1024Mi
+
+replicas: 1
+
+discord:
+  events:
+    - discord.member.joined
+    - discord.member.left
+    - discord.message.created
+    - discord.interaction.command
+
+  commands:
+    - event
+    - event-create
+    - event-list
+    - event-cancel

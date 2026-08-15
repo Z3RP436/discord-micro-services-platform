@@ -1,0 +1,11 @@
+{
+  "commandId": "00000000-0000-0000-0000-000000000003",
+  "correlationId": "00000000-0000-0000-0000-000000000004",
+  "botId": "main",
+  "guildId": "123456789012345678",
+  "userId": "987654321098765432",
+  "command": "event-create",
+  "arguments": {
+    "name": "Community Event"
+  }
+}
