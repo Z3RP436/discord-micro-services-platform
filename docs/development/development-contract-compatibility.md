@@ -57,3 +57,4 @@ Payload fields:
 - Introduce `v2` with explicit `messageType` suffix (example: `bot.lifecycle.command.v2`).
 - Run dual-read support during migrations when both versions are present.
 - Remove old version support only after all producers and consumers are migrated.
+
