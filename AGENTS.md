@@ -18,6 +18,46 @@ Main areas:
 
 ---
 
+## Current Approved Target Vision (2026-08-18)
+
+The current repository state before this date is considered an early draft.
+Agents should align implementation tasks with the following approved target.
+
+### Product Goal
+
+Build a Discord bot microservices platform where:
+
+- bots can be developed independently without changing the main core framework
+- a React frontend can control bot lifecycle and profile assignment
+- communication is event-driven through RabbitMQ
+- delivery runs through GitHub CI/CD and Docker
+
+### Approved Architecture Decisions
+
+- Discovery model: Hybrid GitOps catalog + RabbitMQ live status
+- Naming model:
+  - `bot-api`
+  - `bot-core`
+  - `bot-orchestrator`
+  - `bot-template-standard`
+  - `bot-identity`
+  - `bot-logging`
+- Core strategy: Hybrid library + plugin extension points
+- Resource model: static defaults with UI override per bot/guild
+- Persistence: Postgres for config/permission-related data
+- Infrastructure first: Docker Compose (before production orchestration)
+- Delivery scope: full MVP base including CI workflow drafts
+
+### Boundary Rules Derived From Approved Vision
+
+- `bot-core` should remain a reusable shared foundation and extension API.
+- Bot-specific behavior should live in dedicated bot services.
+- New bot functionality should not require core changes unless the extension contract itself must change.
+- Cross-service payloads must stay in shared contracts.
+- Keep service boundaries explicit and domain-driven.
+
+---
+
 ## Core Rules
 
 ### 1. Do not implement unapproved changes

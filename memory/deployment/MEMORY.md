@@ -4,7 +4,10 @@ This file contains concise, durable deployment-related project context.
 
 ## Confirmed Decisions
 
-No deployment decisions have been finalized yet.
+- Local-first deployment baseline: Docker Compose.
+- Messaging infrastructure: RabbitMQ.
+- Persistence baseline: Postgres.
+- CI/CD direction: GitHub Actions workflows (draft stage in MVP foundation).
 
 ## Rules
 
