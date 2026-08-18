@@ -13,6 +13,10 @@ This file contains concise, durable architecture-related project context.
 - Contract versioning baseline: schema-tagged RabbitMQ messages with `schemaVersion=v1` and typed `messageType`.
 - Compatibility baseline: consumers ignore unsupported schema versions and log warnings.
 - Implementation roadmap is documented in `docs/architecture/architecture-implementation-plan.md`.
+- Bot registration direction: Discord bot instances are managed through token-based registration (JDA runtime target).
+- Token policy: bot tokens must be stored in a database-backed persistence model.
+- Start policy: a bot must not be started when no token is stored for that bot.
+- UI visibility rule: `bot-template-standard` is a template/reference service and should not be listed as a runnable bot in the control panel.
 
 ## Rules
 

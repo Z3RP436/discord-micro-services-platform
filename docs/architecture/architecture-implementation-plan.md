@@ -9,6 +9,13 @@ Concrete plan from current MVP foundation to a production-ready Discord bot micr
 - Phases 0-5 are implemented as MVP foundation.
 - Phase 6 is active (hardening).
 
+## Newly Confirmed Product Decisions (2026-08-18)
+
+- Bot onboarding target flow: provide token in frontend, then start bot.
+- Token persistence: store bot tokens in database persistence (not file-based).
+- Runtime guard: block bot start requests if no token is present.
+- Template visibility: `bot-template-standard` is a template/reference and should not appear as a runnable bot in control panel listings.
+
 ## Work Plan
 
 ### Phase 6A - Contract and Runtime Hardening (in progress)
@@ -73,6 +80,7 @@ Tasks:
 - integrate real Discord bot runtime (JDA-based) in bot services
 - map lifecycle commands to runtime start/stop behavior
 - map command plugins to real Discord interactions
+- define token usage contract between persistence and runtime startup
 
 Deliverables:
 
@@ -85,6 +93,9 @@ Tasks:
 - persist and manage bot-guild assignments
 - resource profile policy enforcement (`small`, `medium`, `large`)
 - orchestration policy refinement between `bot-api` and `bot-orchestrator`
+- add bot token registration API + frontend flow
+- enforce start guard in API/orchestrator path (reject start when token missing)
+- hide template-only services from runnable bot list returned to frontend
 
 Deliverables:
 
