@@ -1,0 +1,15 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: bot-main
+  rabbitmq:
+    host: ${RABBITMQ_HOST:rabbitmq}
+    port: ${RABBITMQ_PORT:5672}
+
+bot:
+  id: ${BOT_ID:bot-main}
+  displayName: ${BOT_DISPLAY_NAME:Main Bot}
+  defaultProfile: ${BOT_PROFILE:MEDIUM}
+

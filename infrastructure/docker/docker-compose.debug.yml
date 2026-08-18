@@ -11,7 +11,7 @@ services:
     ports:
       - "5006:5006"
 
-  bot-template-standard:
+  bot-main:
     environment:
       JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007"
     ports:

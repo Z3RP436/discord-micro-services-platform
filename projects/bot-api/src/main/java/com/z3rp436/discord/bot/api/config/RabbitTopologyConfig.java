@@ -9,6 +9,7 @@ public class RabbitTopologyConfig {
 
     public static final String BOT_LIFECYCLE_QUEUE = "bot.lifecycle.commands";
     public static final String BOT_STATUS_QUEUE = "bot.status.events";
+    public static final String BOT_AUDIT_QUEUE = "bot.audit.events";
 
     @Bean
     Queue botLifecycleQueue() {
@@ -18,5 +19,10 @@ public class RabbitTopologyConfig {
     @Bean
     Queue botStatusQueue() {
         return new Queue(BOT_STATUS_QUEUE, true);
+    }
+
+    @Bean
+    Queue botAuditQueue() {
+        return new Queue(BOT_AUDIT_QUEUE, true);
     }
 }

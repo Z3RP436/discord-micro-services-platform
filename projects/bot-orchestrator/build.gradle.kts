@@ -12,6 +12,7 @@ dependencies {
     implementation(project(":contracts:bot-contracts"))
     implementation(libs.spring.boot.starter)
     implementation(libs.spring.boot.starter.web)
+    implementation(libs.jackson.databind)
     implementation(libs.spring.boot.starter.amqp)
     implementation(libs.spring.boot.starter.validation)
     testImplementation(libs.spring.boot.starter.test)

@@ -10,7 +10,7 @@ val dockerPrepareJars = tasks.register("dockerPrepareJars") {
     dependsOn(
         ":projects:bot-api:bootJar",
         ":projects:bot-orchestrator:bootJar",
-        ":projects:bot-template-standard:bootJar",
+        ":projects:bot-main:bootJar",
         ":projects:bot-identity:bootJar",
         ":projects:bot-logging:bootJar"
     )
