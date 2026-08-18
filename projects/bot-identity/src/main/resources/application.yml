@@ -1,0 +1,14 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: bot-identity
+  datasource:
+    url: ${BOT_IDENTITY_DB_URL:jdbc:postgresql://postgres:5432/bot_identity}
+    username: ${BOT_IDENTITY_DB_USER:bot}
+    password: ${BOT_IDENTITY_DB_PASSWORD:bot}
+  jpa:
+    hibernate:
+      ddl-auto: update
+

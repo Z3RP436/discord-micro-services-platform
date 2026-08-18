@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: bot-api
+  rabbitmq:
+    host: ${RABBITMQ_HOST:rabbitmq}
+    port: ${RABBITMQ_PORT:5672}
+  datasource:
+    url: ${BOT_API_DB_URL:jdbc:postgresql://postgres:5432/bot_api}
+    username: ${BOT_API_DB_USER:bot}
+    password: ${BOT_API_DB_PASSWORD:bot}
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+bot:
+  catalog:
+    path: ${BOT_CATALOG_PATH:infrastructure/bot-catalog/bots.json}
+

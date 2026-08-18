@@ -1,0 +1,18 @@
+{
+  "bots": [
+    {
+      "botId": "bot-template-standard",
+      "displayName": "Standard Bot Template",
+      "defaultProfile": "MEDIUM",
+      "capabilities": [
+        "guild",
+        "user",
+        "permission",
+        "moderation",
+        "logging",
+        "config"
+      ]
+    }
+  ]
+}
+

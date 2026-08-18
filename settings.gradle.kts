@@ -1,8 +1,11 @@
 rootProject.name = "discord-micro-services-platform"
 
 include(
-    ":projects:bot-gateway",
-    ":projects:authorization-service",
-    ":projects:gamemate-service",
-    ":projects:platform-api"
+    ":contracts:bot-contracts",
+    ":projects:bot-core",
+    ":projects:bot-api",
+    ":projects:bot-orchestrator",
+    ":projects:bot-template-standard",
+    ":projects:bot-identity",
+    ":projects:bot-logging"
 )
