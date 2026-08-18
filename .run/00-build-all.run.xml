@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="00 build all" type="GradleRunConfiguration" factoryName="Gradle">
+    <ExternalSystemSettings>
+      <option name="externalProjectPath" value="$PROJECT_DIR$" />
+      <option name="externalSystemIdString" value="GRADLE" />
+      <option name="taskNames">
+        <list>
+          <option value="build" />
+        </list>
+      </option>
+      <option name="vmOptions" value="" />
+      <option name="scriptParameters" value="" />
+    </ExternalSystemSettings>
+    <method v="2" />
+  </configuration>
+</component>
+

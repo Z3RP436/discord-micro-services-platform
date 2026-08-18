@@ -90,5 +90,6 @@ The following has been successfully verified:
 - Contract compatibility rules are documented in `docs/development/development-contract-compatibility.md`.
 - Current implementation status is documented in `docs/development/development-current-status.md`.
 - New bot setup guide is documented in `docs/development/development-new-bot-onboarding.md`.
+- IntelliJ setup and shared run configurations are documented in `docs/development/development-intellij-setup.md`.
 
 
