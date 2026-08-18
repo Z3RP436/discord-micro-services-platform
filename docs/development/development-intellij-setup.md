@@ -44,7 +44,7 @@ The repository now provides these run configs:
 - `.run/01-test-all.run.xml`
 - `.run/10-bot-api-bootrun.run.xml`
 - `.run/11-bot-orchestrator-bootrun.run.xml`
-- `.run/12-bot-template-standard-bootrun.run.xml`
+- `.run/12-bot-main-bootrun.run.xml`
 - `.run/13-bot-identity-bootrun.run.xml`
 - `.run/14-bot-logging-bootrun.run.xml`
 - `.run/20-docker-up-no-tests.run.xml`
@@ -55,7 +55,7 @@ The repository now provides these run configs:
 - `.run/25-docker-debug-down.run.xml`
 - `.run/30-debug-attach-bot-api.run.xml`
 - `.run/31-debug-attach-bot-orchestrator.run.xml`
-- `.run/32-debug-attach-bot-template-standard.run.xml`
+- `.run/32-debug-attach-bot-main.run.xml`
 - `.run/33-debug-attach-bot-identity.run.xml`
 - `.run/34-debug-attach-bot-logging.run.xml`
 
@@ -78,7 +78,7 @@ Debug ports:
 
 - bot-api: `5005`
 - bot-orchestrator: `5006`
-- bot-template-standard: `5007`
+- bot-main: `5007`
 - bot-identity: `5008`
 - bot-logging: `5009`
 

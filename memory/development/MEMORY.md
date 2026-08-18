@@ -1,4 +1,4 @@
-﻿# Development Memory
+# Development Memory
 
 This file contains concise, durable development-related project context.
 
@@ -39,7 +39,7 @@ Current services:
 
 - `projects/bot-api`
 - `projects/bot-orchestrator`
-- `projects/bot-template-standard`
+- `projects/bot-main`
 - `projects/bot-identity`
 - `projects/bot-logging`
 

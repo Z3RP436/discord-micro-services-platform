@@ -14,7 +14,9 @@ Concrete plan from current MVP foundation to a production-ready Discord bot micr
 - Bot onboarding target flow: provide token in frontend, then start bot.
 - Token persistence: store bot tokens in database persistence (not file-based).
 - Runtime guard: block bot start requests if no token is present.
-- Template visibility: `bot-template-standard` is a template/reference and should not appear as a runnable bot in control panel listings.
+- Listing visibility: `bot-main` is a runnable main service; only non-runnable internal services are excluded from control-panel listings.
+- Phase 6E.1 selected model: Option 5 hybrid token persistence (`bot_token_active` + append-only `bot_token_history`).
+- Phase 6E.3 selected guard model: dual-check (`bot-api` + defensive `bot-orchestrator`) with split guard errors (`BOT_TOKEN_MISSING`, `BOT_TOKEN_INACTIVE`) and blocked-start audit event emission.
 
 ## Work Plan
 
@@ -73,6 +75,24 @@ Deliverables:
 - consistent diagnostics across services
 - operational readiness for debugging incidents
 
+### Phase 6E - Token-Start Flow Preparation (next)
+
+Tasks:
+
+- define persistence model for bot tokens in database storage
+- define control-plane start guard contract (reject start when token missing)
+- define catalog/listing rule so only runnable services are returned to control panel
+- define API contract for token registration/update/delete workflows
+- define migration path from current static catalog flow to token-based onboarding
+
+Deliverables:
+
+- approved token persistence model (data fields + ownership + lifecycle)
+- approved API contract draft for token registration workflows
+- approved start-guard behavior definition and error model
+- approved UI listing rule for runnable-only filtering
+- implementation-ready Phase 7 input package
+
 ### Phase 7 - Discord Runtime Integration
 
 Tasks:
@@ -95,7 +115,7 @@ Tasks:
 - orchestration policy refinement between `bot-api` and `bot-orchestrator`
 - add bot token registration API + frontend flow
 - enforce start guard in API/orchestrator path (reject start when token missing)
-- hide template-only services from runnable bot list returned to frontend
+- hide non-runnable/internal services from runnable bot list returned to frontend
 
 Deliverables:
 
@@ -120,7 +140,8 @@ Deliverables:
 2. Add unsupported-version consumer tests.
 3. Add centralized API error handling.
 4. Define health endpoints and standard log schema.
-5. Start Discord runtime spike for one bot service.
+5. Complete Phase 6E token-start preparation package.
+6. Start Discord runtime spike for one bot service.
 
 ## Decision Gates (require user approval)
 

@@ -39,12 +39,15 @@ Build a Discord bot microservices platform where:
   - `bot-api`
   - `bot-core`
   - `bot-orchestrator`
-  - `bot-template-standard`
+  - `bot-main`
   - `bot-identity`
   - `bot-logging`
 - Core strategy: Hybrid library + plugin extension points
 - Resource model: static defaults with UI override per bot/guild
 - Persistence: Postgres for config/permission-related data
+- Bot model: no template service concept; only real bot services including `bot-main`
+- Token policy: every startable bot (including `bot-main`) requires a stored JDA token
+- API policy: OpenAPI-first with interface contracts derived from the v1 specs
 - Infrastructure first: Docker Compose (before production orchestration)
 - Delivery scope: full MVP base including CI workflow drafts
 
