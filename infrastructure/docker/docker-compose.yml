@@ -12,6 +12,8 @@ services:
     environment:
       POSTGRES_USER: bot
       POSTGRES_PASSWORD: bot
+    volumes:
+      - ../postgres/init:/docker-entrypoint-initdb.d:ro
     ports:
       - "5432:5432"
 
@@ -81,4 +83,13 @@ services:
       - "8085:8085"
     depends_on:
       - rabbitmq
+
+  control-panel:
+    build:
+      context: ../..
+      dockerfile: infrastructure/docker/services/control-panel/Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - bot-api
 

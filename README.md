@@ -32,6 +32,22 @@ cd infrastructure\docker
 docker compose up --build
 ```
 
+Frontend URL in compose:
+
+- `http://localhost:3000`
+
+## Run Frontend Locally
+
+```powershell
+cd frontend\control-panel
+npm install
+npm run dev
+```
+
+Local frontend URL:
+
+- `http://localhost:5173`
+
 ## CI/CD Drafts
 
 - `.github/workflows/ci.yml`
