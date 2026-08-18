@@ -91,6 +91,7 @@ The following has been successfully verified:
 - Current implementation status is documented in `docs/development/development-current-status.md`.
 - New bot setup guide is documented in `docs/development/development-new-bot-onboarding.md`.
 - IntelliJ setup and shared run configurations are documented in `docs/development/development-intellij-setup.md`.
+- IntelliJ `.run/` includes shared Docker start/stop configs (with/without tests) and remote debug attach configs.
 - Slim frontend control panel usage is documented in `docs/development/development-control-panel.md`.
 
 

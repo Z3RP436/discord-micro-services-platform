@@ -47,8 +47,40 @@ The repository now provides these run configs:
 - `.run/12-bot-template-standard-bootrun.run.xml`
 - `.run/13-bot-identity-bootrun.run.xml`
 - `.run/14-bot-logging-bootrun.run.xml`
+- `.run/20-docker-up-no-tests.run.xml`
+- `.run/21-docker-up-with-tests.run.xml`
+- `.run/22-docker-down.run.xml`
+- `.run/23-docker-debug-up-no-tests.run.xml`
+- `.run/24-docker-debug-up-with-tests.run.xml`
+- `.run/25-docker-debug-down.run.xml`
+- `.run/30-debug-attach-bot-api.run.xml`
+- `.run/31-debug-attach-bot-orchestrator.run.xml`
+- `.run/32-debug-attach-bot-template-standard.run.xml`
+- `.run/33-debug-attach-bot-identity.run.xml`
+- `.run/34-debug-attach-bot-logging.run.xml`
 
 They appear in IntelliJ Run/Debug configurations after project refresh.
+
+## Docker Run Sequence
+
+For normal docker start:
+
+1. Run `20 docker up (no tests)` or `21 docker up (with tests)`.
+2. Stop with `22 docker down`.
+
+For docker debug start:
+
+1. Run `23 docker debug up (no tests)` or `24 docker debug up (with tests)`.
+2. Attach debugger using one of `30-34` attach configs.
+3. Stop with `25 docker debug down`.
+
+Debug ports:
+
+- bot-api: `5005`
+- bot-orchestrator: `5006`
+- bot-template-standard: `5007`
+- bot-identity: `5008`
+- bot-logging: `5009`
 
 ## Notes
 
