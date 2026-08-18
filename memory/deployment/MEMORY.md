@@ -8,6 +8,7 @@ This file contains concise, durable deployment-related project context.
 - Messaging infrastructure: RabbitMQ.
 - Persistence baseline: Postgres.
 - CI/CD direction: GitHub Actions workflows (draft stage in MVP foundation).
+- Postgres databases are initialized via `infrastructure/postgres/init/*.sql` mounted into `/docker-entrypoint-initdb.d`.
 
 ## Rules
 

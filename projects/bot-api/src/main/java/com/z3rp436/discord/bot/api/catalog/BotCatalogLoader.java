@@ -15,8 +15,8 @@ public class BotCatalogLoader {
     private final ObjectMapper objectMapper;
     private final Path catalogPath;
 
-    public BotCatalogLoader(ObjectMapper objectMapper, @Value("${bot.catalog.path}") String catalogPath) {
-        this.objectMapper = objectMapper;
+    public BotCatalogLoader(@Value("${bot.catalog.path}") String catalogPath) {
+        this.objectMapper = new ObjectMapper();
         this.catalogPath = Path.of(catalogPath);
     }
 
