@@ -1,0 +1,30 @@
+name: Docker Draft
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  docker-build-draft:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service:
+          - bot-api
+          - bot-orchestrator
+          - bot-template-standard
+          - bot-identity
+          - bot-logging
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Java 24
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '24'
+      - name: Build JARs
+        run: ./gradlew :projects:${{ matrix.service }}:bootJar
+      - name: Build Docker image (draft)
+        run: docker build -f infrastructure/docker/services/${{ matrix.service }}/Dockerfile -t local/${{ matrix.service }}:draft .
+

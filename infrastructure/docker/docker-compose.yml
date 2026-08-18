@@ -1,0 +1,84 @@
+version: "3.9"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: bot
+      POSTGRES_PASSWORD: bot
+    ports:
+      - "5432:5432"
+
+  bot-api:
+    build:
+      context: ../..
+      dockerfile: infrastructure/docker/services/bot-api/Dockerfile
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      BOT_API_DB_URL: jdbc:postgresql://postgres:5432/bot_api
+      BOT_API_DB_USER: bot
+      BOT_API_DB_PASSWORD: bot
+      BOT_CATALOG_PATH: /workspace/infrastructure/bot-catalog/bots.json
+    volumes:
+      - ../../infrastructure/bot-catalog:/workspace/infrastructure/bot-catalog:ro
+    ports:
+      - "8081:8081"
+    depends_on:
+      - rabbitmq
+      - postgres
+
+  bot-orchestrator:
+    build:
+      context: ../..
+      dockerfile: infrastructure/docker/services/bot-orchestrator/Dockerfile
+    environment:
+      RABBITMQ_HOST: rabbitmq
+    ports:
+      - "8082:8082"
+    depends_on:
+      - rabbitmq
+
+  bot-template-standard:
+    build:
+      context: ../..
+      dockerfile: infrastructure/docker/services/bot-template-standard/Dockerfile
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      BOT_ID: bot-template-standard
+      BOT_DISPLAY_NAME: Standard Bot Template
+      BOT_PROFILE: MEDIUM
+    ports:
+      - "8083:8083"
+    depends_on:
+      - rabbitmq
+
+  bot-identity:
+    build:
+      context: ../..
+      dockerfile: infrastructure/docker/services/bot-identity/Dockerfile
+    environment:
+      BOT_IDENTITY_DB_URL: jdbc:postgresql://postgres:5432/bot_identity
+      BOT_IDENTITY_DB_USER: bot
+      BOT_IDENTITY_DB_PASSWORD: bot
+    ports:
+      - "8084:8084"
+    depends_on:
+      - postgres
+
+  bot-logging:
+    build:
+      context: ../..
+      dockerfile: infrastructure/docker/services/bot-logging/Dockerfile
+    environment:
+      RABBITMQ_HOST: rabbitmq
+    ports:
+      - "8085:8085"
+    depends_on:
+      - rabbitmq
+
