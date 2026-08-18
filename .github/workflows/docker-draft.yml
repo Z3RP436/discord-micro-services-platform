@@ -13,7 +13,7 @@ jobs:
         service:
           - bot-api
           - bot-orchestrator
-          - bot-template-standard
+          - bot-main
           - bot-identity
           - bot-logging
     steps:

@@ -22,6 +22,17 @@ async function sendLifecycle(botId, action, profile) {
   });
 
   if (!response.ok) {
+    let reasonCode = "";
+    try {
+      const payload = await response.json();
+      reasonCode = payload.errorCode || "";
+    } catch {
+      // Keep fallback below when backend returns no JSON body.
+    }
+
+    if (reasonCode) {
+      throw new Error(`Could not trigger ${action} for ${botId} (${reasonCode})`);
+    }
     throw new Error(`Could not trigger ${action} for ${botId}`);
   }
 }
@@ -107,6 +118,9 @@ export default function App() {
 
               <p className="muted">ID: {bot.botId}</p>
               <p className="muted">Capabilities: {(bot.capabilities || []).join(", ") || "-"}</p>
+              <p className="muted">Configured: {bot.configured ? "yes" : "no"}</p>
+              <p className="muted">Runnable: {bot.runnable ? "yes" : "no"}</p>
+              {!bot.runnable && bot.reasonCode ? <p className="muted">Reason: {bot.reasonCode}</p> : null}
 
               <label className="row" htmlFor={`profile-${bot.botId}`}>
                 Profile
@@ -126,7 +140,7 @@ export default function App() {
               </label>
 
               <div className="actions">
-                <button type="button" disabled={busy} onClick={() => trigger(bot.botId, "START")}>
+                <button type="button" disabled={busy || !bot.runnable} onClick={() => trigger(bot.botId, "START")}>
                   Start
                 </button>
                 <button type="button" className="secondary" disabled={busy} onClick={() => trigger(bot.botId, "STOP")}>

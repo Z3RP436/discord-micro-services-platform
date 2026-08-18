@@ -6,7 +6,7 @@ MVP foundation for a Discord bot microservices platform with strict service boun
 
 - `bot-api` frontend-facing API, catalog + live status + profile overrides
 - `bot-orchestrator` lifecycle command publisher
-- `bot-template-standard` reference bot with moderation/logging/config plugin commands
+- `bot-main` reference bot with moderation/logging/config plugin commands
 - `bot-identity` guild/user/permission persistence
 - `bot-logging` status event consumer
 - `bot-core` shared library and plugin extension contract
@@ -27,7 +27,7 @@ MVP foundation for a Discord bot microservices platform with strict service boun
 ## Run Compose Stack
 
 ```powershell
-.\gradlew.bat :projects:bot-api:bootJar :projects:bot-orchestrator:bootJar :projects:bot-template-standard:bootJar :projects:bot-identity:bootJar :projects:bot-logging:bootJar
+.\gradlew.bat :projects:bot-api:bootJar :projects:bot-orchestrator:bootJar :projects:bot-main:bootJar :projects:bot-identity:bootJar :projects:bot-logging:bootJar
 cd infrastructure\docker
 docker compose up --build
 ```

@@ -46,14 +46,14 @@ services:
     depends_on:
       - rabbitmq
 
-  bot-template-standard:
+  bot-main:
     build:
       context: ../..
-      dockerfile: infrastructure/docker/services/bot-template-standard/Dockerfile
+      dockerfile: infrastructure/docker/services/bot-main/Dockerfile
     environment:
       RABBITMQ_HOST: rabbitmq
-      BOT_ID: bot-template-standard
-      BOT_DISPLAY_NAME: Standard Bot Template
+      BOT_ID: bot-main
+      BOT_DISPLAY_NAME: Main Bot
       BOT_PROFILE: MEDIUM
     ports:
       - "8083:8083"

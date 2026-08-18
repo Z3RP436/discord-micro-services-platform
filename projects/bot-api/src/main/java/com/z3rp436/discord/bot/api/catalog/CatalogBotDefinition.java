@@ -6,7 +6,8 @@ public record CatalogBotDefinition(
         String botId,
         String displayName,
         String defaultProfile,
-        Set<String> capabilities
+        Set<String> capabilities,
+        ServiceType serviceType
 ) {
 }
 

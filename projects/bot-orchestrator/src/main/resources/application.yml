@@ -8,3 +8,6 @@ spring:
     host: ${RABBITMQ_HOST:rabbitmq}
     port: ${RABBITMQ_PORT:5672}
 
+bot-api:
+  base-url: ${BOT_API_BASE_URL:http://bot-api:8081}
+

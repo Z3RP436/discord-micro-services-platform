@@ -7,12 +7,13 @@ This document defines the approved target architecture for the Discord bot micro
 ## Confirmed Decisions
 
 - Discovery model: Hybrid GitOps + RabbitMQ live status.
-- Service naming: `bot-api`, `bot-core`, `bot-orchestrator`, `bot-template-standard`, `bot-identity`, `bot-logging`.
+- Service naming: `bot-api`, `bot-core`, `bot-orchestrator`, `bot-main`, `bot-identity`, `bot-logging`.
 - Core strategy: Hybrid library + plugin extension points.
 - Resource model: static defaults (`small`, `medium`, `large`) with UI overrides per bot and guild.
 - Delivery scope: full MVP base with CI workflow drafts.
 - Infrastructure first target: Docker Compose + RabbitMQ.
 - Persistence: Postgres for configuration/permission data.
+- Runtime scaling target: support multiple parallel bot instances from the same bot service implementation (e.g. `bot-main`) using distinct stored tokens per instance.
 
 ## Service Boundaries
 
@@ -30,7 +31,7 @@ This document defines the approved target architecture for the Discord bot micro
 - Publishes standardized lifecycle command messages.
 - Keeps orchestration concerns separate from frontend API concerns.
 
-### `bot-template-standard`
+### `bot-main`
 
 - Reference bot service and default implementation.
 - Uses `bot-core` plugin interface and reusable primitives.
@@ -61,7 +62,7 @@ This document defines the approved target architecture for the Discord bot micro
 
 - Queue: `bot.lifecycle.commands`
   - Producers: `bot-api`, `bot-orchestrator`
-  - Consumers: bot runtime services (starting with `bot-template-standard`)
+  - Consumers: bot runtime services (starting with `bot-main`)
 - Queue: `bot.status.events`
   - Producers: bot runtime services
   - Consumers: `bot-api`, `bot-logging`

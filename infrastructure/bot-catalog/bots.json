@@ -1,9 +1,10 @@
 {
   "bots": [
     {
-      "botId": "bot-template-standard",
-      "displayName": "Standard Bot Template",
+      "botId": "bot-main",
+      "displayName": "Main Bot",
       "defaultProfile": "MEDIUM",
+      "serviceType": "RUNNABLE_BOT",
       "capabilities": [
         "guild",
         "user",

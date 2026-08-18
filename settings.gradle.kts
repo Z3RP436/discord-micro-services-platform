@@ -5,7 +5,7 @@ include(
     ":projects:bot-core",
     ":projects:bot-api",
     ":projects:bot-orchestrator",
-    ":projects:bot-template-standard",
+    ":projects:bot-main",
     ":projects:bot-identity",
     ":projects:bot-logging"
 )

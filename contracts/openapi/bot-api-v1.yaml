@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: Bot API
+  version: 1.0.0
+paths:
+  /api/bots:
+    get:
+      summary: List bot services with configuration and runnable state
+      responses:
+        '200':
+          description: Bot services
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required: [botId, displayName, configured, runnable]
+                  properties:
+                    botId:
+                      type: string
+                    displayName:
+                      type: string
+                    defaultProfile:
+                      type: string
+                    capabilities:
+                      type: array
+                      items:
+                        type: string
+                    configured:
+                      type: boolean
+                    runnable:
+                      type: boolean
+                    reasonCode:
+                      type: string
+                      nullable: true
+                      enum: [TOKEN_MISSING, TOKEN_INVALID, BOT_NOT_RUNNABLE]
+                    liveStatus:
+                      type: string
+                    lastStatusTimestamp:
+                      type: string
+                      nullable: true
+  /api/bots/{botId}/lifecycle:
+    post:
+      summary: Trigger lifecycle action
+      parameters:
+        - in: path
+          name: botId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [action, profile, requestedBy]
+              properties:
+                action:
+                  type: string
+                  enum: [START, STOP, RESTART]
+                profile:
+                  type: string
+                requestedBy:
+                  type: string
+      responses:
+        '200':
+          description: Accepted
+        '404':
+          description: Bot not found
+        '409':
+          description: Bot not runnable (`BOT_NOT_RUNNABLE`)
+        '412':
+          description: Start guard failed (`TOKEN_MISSING` or `TOKEN_INVALID`)
+  /api/bots/{botId}/token:
+    put:
+      summary: Upsert JDA token
+      parameters:
+        - in: path
+          name: botId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [jdaToken]
+              properties:
+                jdaToken:
+                  type: string
+                updatedBy:
+                  type: string
+      responses:
+        '200':
+          description: Token status
+        '404':
+          description: Bot not found
+        '409':
+          description: Bot not runnable (`BOT_NOT_RUNNABLE`)
+    get:
+      summary: Get token status metadata
+      parameters:
+        - in: path
+          name: botId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Token status
+        '404':
+          description: Bot not found
+        '409':
+          description: Bot not runnable (`BOT_NOT_RUNNABLE`)
+    delete:
+      summary: Delete active token
+      parameters:
+        - in: path
+          name: botId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Token deleted
+        '404':
+          description: Bot not found
+        '409':
+          description: Bot not runnable (`BOT_NOT_RUNNABLE`)
+        '412':
+          description: Token missing
+
+
+

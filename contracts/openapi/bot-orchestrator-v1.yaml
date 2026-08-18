@@ -1,0 +1,36 @@
+openapi: 3.1.0
+info:
+  title: Bot Orchestrator API
+  version: 1.0.0
+paths:
+  /orchestrator/bots/{botId}/lifecycle:
+    post:
+      summary: Trigger lifecycle action with defensive start guard
+      parameters:
+        - in: path
+          name: botId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [action, profile, requestedBy]
+              properties:
+                action:
+                  type: string
+                  enum: [START, STOP, RESTART]
+                profile:
+                  type: string
+                requestedBy:
+                  type: string
+      responses:
+        '200':
+          description: Accepted
+        '412':
+          description: Start guard failed (`TOKEN_MISSING`, `TOKEN_INVALID`, `BOT_NOT_RUNNABLE`)
+
+
